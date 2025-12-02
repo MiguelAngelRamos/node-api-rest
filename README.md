@@ -223,4 +223,4 @@ MIT
 
 [![GitHub](https://img.shields.io/badge/GitHub-MiguelAngelRamos-181717?style=for-the-badge&logo=github)](https://github.com/MiguelAngelRamos)
 
-Desarrollado con ❤️ usando Node.js y TypeScript
+Desarrollado con usando Node.js y TypeScript
