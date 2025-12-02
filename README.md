@@ -211,10 +211,16 @@ Este proyecto usa:
 - **ts-node** para ejecutar TypeScript directamente
 - **TypeScript** para tipado estático
 
-## Licencia
+## 📄 Licencia
 
 MIT
 
 ---
 
-Desarrollado con @MiguelAngelRamos usando Node.js y TypeScript
+## 👨‍💻 Autor
+
+**Miguel Ángel Ramos**
+
+[![GitHub](https://img.shields.io/badge/GitHub-MiguelAngelRamos-181717?style=for-the-badge&logo=github)](https://github.com/MiguelAngelRamos)
+
+Desarrollado con ❤️ usando Node.js y TypeScript
