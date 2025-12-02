@@ -2,7 +2,7 @@
 
 API REST desarrollada con Node.js, TypeScript y Express que implementa autenticación de usuarios siguiendo principios SOLID y arquitectura limpia.
 
-## 🚀 Descripción
+##  Descripción
 
 Esta API proporciona un sistema de autenticación de usuarios con las siguientes características:
 
@@ -14,12 +14,12 @@ Esta API proporciona un sistema de autenticación de usuarios con las siguientes
 - **Validación de DTOs** con class-validator
 - **Arquitectura limpia** siguiendo principios SOLID
 
-## 📋 Requisitos Previos
+##  Requisitos Previos
 
 - Node.js (v14 o superior)
 - npm o yarn
 
-## 🔧 Instalación
+##  Instalación
 
 1. Clona el repositorio:
 ```bash
@@ -44,7 +44,7 @@ npm run dev
 
 El servidor se ejecutará en `http://localhost:3000`
 
-## 📚 Estructura del Proyecto
+##  Estructura del Proyecto
 
 ```
 api-node-ts/
@@ -76,7 +76,7 @@ api-node-ts/
 └── README.md
 ```
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 - **Node.js** - Entorno de ejecución
 - **TypeScript** - Lenguaje de programación
@@ -127,7 +127,7 @@ Registra un nuevo usuario en el sistema.
 }
 ```
 
-## 🏗️ Arquitectura
+## Arquitectura
 
 Este proyecto sigue los principios SOLID:
 
@@ -150,7 +150,7 @@ Este proyecto sigue los principios SOLID:
 - Las dependencias se inyectan a través de interfaces
 - `AuthService` depende de `IUserRepository`, no de la implementación concreta
 
-## 🧪 Ejemplos de Uso
+## Ejemplos de Uso
 
 ### Registrar un usuario con cURL:
 ```bash
@@ -180,19 +180,19 @@ fetch('http://localhost:3000/auth/register', {
 .then(data => console.log(data));
 ```
 
-## 🔐 Seguridad
+## Seguridad
 
 - Las contraseñas se almacenan encriptadas usando bcrypt con un salt de 10 rondas
 - Se generan tokens JWT con expiración de 1 hora
 - Se validan todos los datos de entrada usando class-validator
 
-## 📝 Notas Importantes
+## Notas Importantes
 
-⚠️ **Cambiar el secreto JWT**: El secreto JWT está hardcodeado en `AuthService.ts`. En producción, debe moverse a variables de entorno.
+**Cambiar el secreto JWT**: El secreto JWT está hardcodeado en `AuthService.ts`. En producción, debe moverse a variables de entorno.
 
-⚠️ **Base de datos**: La API usa SQLite. Asegúrate de que la base de datos esté inicializada con la tabla `users` antes de ejecutar.
+ **Base de datos**: La API usa SQLite. Asegúrate de que la base de datos esté inicializada con la tabla `users` antes de ejecutar.
 
-## 🚧 Próximas Funcionalidades
+## Próximas Funcionalidades
 
 - [ ] Endpoint de login
 - [ ] Refresh tokens
@@ -204,17 +204,17 @@ fetch('http://localhost:3000/auth/register', {
 - [ ] Rate limiting
 - [ ] CORS configurado
 
-## 👨‍💻 Desarrollo
+## Desarrollo
 
 Este proyecto usa:
 - **nodemon** para desarrollo en caliente
 - **ts-node** para ejecutar TypeScript directamente
 - **TypeScript** para tipado estático
 
-## 📄 Licencia
+## Licencia
 
-ISC
+MIT
 
 ---
 
-Desarrollado con ❤️ usando Node.js y TypeScript
+Desarrollado con @MiguelAngelRamos usando Node.js y TypeScript
