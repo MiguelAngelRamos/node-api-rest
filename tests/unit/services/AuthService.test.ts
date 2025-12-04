@@ -1,3 +1,4 @@
+import { User } from "../../../src/domain/entities/User";
 import { IUserRepository } from "../../../src/domain/interfaces/IUserRepository";
 import { RegisterDto } from "../../../src/dtos/RegisterDto";
 import { AuthService } from "../../../src/services/AuthService";
@@ -28,6 +29,26 @@ describe('AuthService - Unit test', () => {
       authService = new AuthService(mockUserRepository);
       (bcrypt.hash as jest.Mock).mockResolvedValue(hashedPassword);
       (jwt.sign as jest.Mock).mockReturnValue(mockToken);
+    })
+
+    afterEach(() => {
+      jest.clearAllMocks();
+    })
+
+    describe('register()', ()=> {
+      it('deberia registar a un nuevo usuario de manera exitosa y retornar el jwt', async () => {
+        
+        const expectedUser = new User(
+          expect.any(String),
+          validRegisterDto.email,
+          hashedPassword,
+          validRegisterDto.name          
+        );
+
+        mockUserRepository.findByEmail.mockResolvedValue(null);
+        mockUserRepository.create.mockResolvedValue(expectedUser);
+
+      })
     })
 
    
