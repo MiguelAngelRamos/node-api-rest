@@ -4,7 +4,7 @@ import { RegisterDto } from "../../../src/dtos/RegisterDto";
 import { AuthService } from "../../../src/services/AuthService";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-jest.mock('bycryptjs');
+jest.mock('bcryptjs');
 jest.mock('jsonwebtoken');
 
 describe('AuthService - Unit test', () => {
