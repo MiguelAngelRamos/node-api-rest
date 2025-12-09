@@ -71,12 +71,45 @@ describe('AuthService - Unit test', () => {
         const result = await authService.register(validRegisterDto);
 
         expect(result).toHaveProperty('token', mockToken);
+        expect(result).toHaveProperty('user');
 
-        
+        // Afirmaciones que podriamos denominar SEGURIDAD
+        expect(result.user).not.toHaveProperty('password');
 
+        // Verificar que el email coincide exactamente con el email que se envio para registrar el usuario
+        expect(result.user.email).toBe(validRegisterDto.email);
+        expect(result.user.name).toBe(validRegisterDto.name);
 
+        // Verificar que findByEmail se llama exactamente una sola vez
+        // No debe llamarse mas de una vez ni 0 veces (si es asi sera un BUG)
 
+        // Jest verifica mockUserRepository.findByEmail.mock.calls.length === 1
+        expect(mockUserRepository.findByEmail).toHaveBeenCalledTimes(1);
 
+        /* Verificar que bcrypt.hash() se llamo con 
+        Parametro 1: el password en texto plano ('academynode)
+        Parametro 2: El salt rounds (10 = nivel de seguridad)
+
+        Como logramos esto como funciona?
+        Jest comapra los parametros grabados
+
+        bcrypt.hash.mock.calls[0][0] === validRegisterDto.password
+        bcrypt.hash.mock.calls[0][1] === 10
+        */
+       expect(bcrypt.hash).toHaveBeenCalledWith(validRegisterDto.password, 10);
+
+       // Jest verifica mockUserRepository.create.mock.calls.length === 1
+       expect(mockUserRepository.create).toHaveBeenCalledTimes(1);
+
+      /**
+       * Verificar que jwt.sign() se llamó con los parametros correctos
+       * parametro 1: payload del token (debe contener al menos el email o propiedad email)
+       * parametro 2: Secret key para firmar el jwt ('TU_SECRETO_JWT')
+       * parametro 3: Opciones expiresIn: '1h' token es valido por una hora
+       * 
+       * Recuerda que Jest grabo todos parametros con el mock.calls
+       */
+       expect(jwt.sign).toHaveBeenCalledWith(expect.objectContaining({email: validRegisterDto.email}), 'TU_SECRETO_JWT', {expiresIn: '1h'})
 
       })
     })

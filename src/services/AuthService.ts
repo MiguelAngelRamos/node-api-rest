@@ -52,6 +52,14 @@ export class AuthService {
           token: token,
           user: userWithoutPass
         }
+        // return {
+        //   token: token,
+        //   user:{ id: newUser.id,
+        //          email: newUser.email,
+        //          name: newUser.name
+        //   }
+        // }
+        // user.email
         // return { token, user: userWithoutPass };
     }
 }
