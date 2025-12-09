@@ -38,13 +38,20 @@ export class AuthService {
 
         // 5. Generar JWT
         const token = jwt.sign(
-            { id: newUser.id, email: newUser.email }, 
+            { id: newUser.id, 
+              email: newUser.email 
+            }, 
             "TU_SECRETO_JWT", 
             { expiresIn: "1h" }
         );
 
         // Retornamos token y datos del usuario (sin password)
         const { password, ...userWithoutPass } = newUser;
-        return { token, user: userWithoutPass };
+
+        return {
+          token: token,
+          user: userWithoutPass
+        }
+        // return { token, user: userWithoutPass };
     }
 }
