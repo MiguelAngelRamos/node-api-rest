@@ -20,7 +20,7 @@ export class AuthService {
         // 1. Verificar si existe
         const existing = await this.userRepo.findByEmail(dto.email);
         if (existing) throw new Error("El usuario ya existe");
-
+          
         // 2. Hash password
         const hashedPassword = await bcrypt.hash(dto.password, 10);
 

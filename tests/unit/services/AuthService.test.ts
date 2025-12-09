@@ -111,7 +111,32 @@ describe('AuthService - Unit test', () => {
        */
        expect(jwt.sign).toHaveBeenCalledWith(expect.objectContaining({email: validRegisterDto.email}), 'TU_SECRETO_JWT', {expiresIn: '1h'})
 
+      });
+
+      // TEST 2: Caso de Error - EL USUARIO ya existe con ese correo (email)
+      it('deberia generar un error cuando usuario ya esta registrado con ese email', async () => {
+        // ARRANGE usuario ya existe en la base 
+        // nota: tambien reutilizamos codigo de beforeEach
+        const existingUser = new User(
+          '123',
+          validRegisterDto.email,
+          'old password',
+          'old name'
+        );
+
+        mockUserRepository.findByEmail.mockResolvedValue(existingUser);
+
+        await expect(authService.register(validRegisterDto))// Ejecuta esto y espera
+        .rejects// la promesa falla (reject)
+        .toThrow('El usuario ya existe'); // el motivo del fallo debe ser el texto exacto ''El usuario ya existe'
+
+        // Verify
+        expect(bcrypt.hash).not.toHaveBeenCalled();
+        expect(mockUserRepository.create).not.toHaveBeenCalled();
+        expect(jwt.sign).not.toHaveBeenCalled();
       })
+
+
     })
 
    
